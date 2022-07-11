@@ -318,3 +318,115 @@ return false;
 }
 
 console.log(possibleBonus(5, 3));
+// Write a function that takes a number and returns the perimeter of either a circle or a square. The input will be in the form (letter l, number num) where the letter will be either "s" for square, or "c" for circle, and the number will be the side of the square or the radius of the circle.
+
+// Use the following formulas:
+
+// Perimeter of a square: 4 * side.
+// Perimeter of a circle: 6.28 * radius.
+
+// The catch is you can only use arithmetic or comparison operators, which means:
+
+//     No if... else statements.
+//     No objects.
+//     No arrays.
+//     No formatting methods, etc.
+
+// The goal is to write a short, branch-free piece of code.
+// Examples
+
+// perimeter("s", 7) ➞ 28
+
+// perimeter("c", 4) ➞ 25.12
+
+// perimeter("c", 9) ➞ 56.52
+
+function perimeter(shape, num) {
+  while (shape === 's') {
+    return 4 * num;
+    break;
+  }
+  while (shape === 'c') {
+    return 6.28 * num;
+    break;
+  }
+}
+
+
+console.log(perimeter('s', 7));
+
+
+// Create a function that will return an integer number corresponding to the amount of digits in the given integer num.
+// Examples
+
+// num_of_digits(1000) ➞ 4
+
+// num_of_digits(12) ➞ 2
+
+// num_of_digits(1305981031) ➞ 10
+
+// num_of_digits(0) ➞ 1
+
+// Notes
+
+// Try to solve this challenge without using strings!
+
+function num_of_digits(num) {
+  const numArray = num.toString().split('');
+  let countDigitNum = 0;
+  for (i = 0; i < numArray.length; i++) {
+    countDigitNum++;
+  }
+  return countDigitNum;
+}
+
+console.log(num_of_digits(1305981031));
+
+
+// Given three arguments ⁠— an object obj of the stolen items, the pets name and a value ⁠— return an object with that name and value in it (as key-value pairs).
+// Examples
+
+// addName({}, "Brutus", 300) ➞ { Brutus: 300 }
+
+// addName({ piano: 500 }, "Brutus", 400) ➞ { piano: 500, Brutus: 400 }
+
+// addName({ piano: 500, stereo: 300 }, "Caligula", 440) ➞ { piano: 500, stereo: 300, Caligula: 440 }
+
+function addName (object, key, value) {
+  object[key] = value;
+  return object;
+}
+
+console.log({ piano: 500, stereo: 300 }, "Caligula", 440);
+
+// Try finding your ancestors and offspring with code.
+
+// Create a function that takes a number x and a character y ("m" for male, "f" for female), and returns the name of an ancestor (m/f) or descendant (m/f).
+
+//     If the number is negative, return the related ancestor.
+//     If positive, return the related descendant.
+//     You are generation 0. In the case of 0 (male or female), return "me!".
+
+// Examples
+
+// generation(2, "f") ➞ "granddaughter"
+
+// generation(-3, "m") ➞ "great grandfather"
+
+// generation(1, "f") ➞ "daughter"
+
+function findAncestor(generation, gender) {
+  numBelowMe = 0;
+  ancestorObj = {
+    'f' : ['great grandmother', 'grandmother', 'mother', 'me', 'daughter', 'granddaughter', 'great granddaughter'],
+    'm' : ['great grandfather', 'grandfather', 'father', 'me', 'son', 'grandson', 'great grandson']
+  }
+  for(i = 0; i < ancestorObj['f'].length; i++){
+     if(ancestorObj['f'][i] === 'me') {break;}
+     numBelowMe++;
+  }
+  return ancestorObj[gender][generation + numBelowMe];
+}
+
+console.log(findAncestor(-3, "m"));
+
